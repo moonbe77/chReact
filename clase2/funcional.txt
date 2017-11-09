@@ -1,0 +1,8 @@
+Programacion funcional
+
+1. Funcion es un valor
+2. NO modifica el valor de una variable
+3. Inmutable
+
+
+elemntos dentro de un programa (cohersivo y acoplamiento)
