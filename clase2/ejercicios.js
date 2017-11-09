@@ -257,7 +257,7 @@ console.log("---------------LAT----------------")
 
 function findUsesXlat (u){    
     return u.find(function(u){
-        return (u.address.geo.lat == u.address.geo.lat > 20 && u.address.geo.lat < 30)
+        return (u == u.address.geo.lat > 20 && u.address.geo.lat < 30)
     })
 }
 
@@ -271,6 +271,12 @@ function website(u) {
         console.log(u.website)
     }, this);
 }
+
+var arrayWebsites = users.map(function(u){
+    return u.website
+})
+console.log(arrayWebsites)
+
 
 let listWebsite = website(users)
 console.log() 
