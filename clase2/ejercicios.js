@@ -277,6 +277,5 @@ var arrayWebsites = users.map(function(u){
 })
 console.log(arrayWebsites)
 
-
 let listWebsite = website(users)
 console.log() 
