@@ -5,6 +5,7 @@ import './App.css';
 import Header from './components/Header'
 import Img from './components/Image'
 import Counter from './components/Counter'
+import Counter2 from './components/Counter2'
 
 
 class Texto extends React.Component {
@@ -26,6 +27,7 @@ class App extends React.Component {
         </div>
         <Img/>
         <Counter/>
+        <Counter2 inicio="10"/>
       </div>
     );
   }
