@@ -6,13 +6,13 @@ class Counter2 extends React.Component{
         super(props)
         console.log("Soy counter")
         this.state = {
-            counter: props.inicio
+            counter: Number(props.inicio)
         }
     }
 
     suma = (event) => {
         console.log("click boton")
-        let nuevo = this.state.cunter + 1
+        let nuevo = this.state.counter + 2
         this.setState({ counter:  nuevo })        
     }
         

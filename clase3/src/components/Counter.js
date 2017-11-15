@@ -12,7 +12,7 @@ class Counter extends React.Component{
 
     suma = (event) => {
         console.log("click boton")
-        let nuevo = this.state.cunter + 1
+        let nuevo = this.state.counter + 1
         this.setState({ counter:  nuevo })        
     }
         
