@@ -50,12 +50,12 @@ Promise
         let users = JSON.parse(values[0]);
         let posts = JSON.parse(values[1]);
 
-        let lista = post.map(function(){
+        let lista = posts.map(function(){
             let value = users.find(function (u) {
-                return (users.id == post.);
+                return (users.id == posts);
             });
         })
-       
+    //    return lista
         // Tomar el listado de posts
         // y por cada post reemplezar el userId por el user.
         
