@@ -10,9 +10,10 @@ class UsersInPost  extends Component {
     }
 
     componentDidMount() {
-        
+    //  hacer un fetch de los nombres de los usuarios en cda post    
     }
     
+
     render() {
         return (
             <div>
