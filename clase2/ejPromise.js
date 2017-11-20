@@ -1,7 +1,6 @@
  // Tomar el listado de posts
 // y por cada post reemplezar el userId por el user.
 
-
 const requestProm = require('request-promise');
 
 function postDetail (postId) {
