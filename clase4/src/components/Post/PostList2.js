@@ -7,42 +7,46 @@ class PostList2 extends React.Component {
         super();
         this.state = {
             posts : [],
-            users : []
+            users : [],
+            all :[]
         }
     }
 
     componentDidMount(){
         console.log('Voy a buscar los posts');
-        fetch('https://jsonplaceholder.typicode.com/posts')
-            .then(response => response.json()) // es lo mismo que function (response) { return response.json()}
-            .then( posts => {
-                //console.log(posts);
-                this.setState({ posts: posts })
-            })
-            .catch( err => console.log(err) )
-           
+        
+            fetch('https://jsonplaceholder.typicode.com/posts')
+                .then(response => response.json()) // es lo mismo que function (response) { return response.json()}
+                .then( posts => {
+                    //console.log(posts);
+                    this.setState({ posts: posts })
+                })
 
-        fetch ('https://jsonplaceholder.typicode.com/users')
-            .then( response => response.json() )
-            .then ( users => {
-                this.setState({users : users})
-                //console.log(this.state.users) 
+            fetch ('https://jsonplaceholder.typicode.com/users')
+                .then( response => response.json() )
+                .then ( users => {
+                    this.setState({users : users})
+                    //console.log(this.state.users) 
             })
-            .catch( err => console.log(err) )
 
-            /*
+        let postsAll = fetch ('https://jsonplaceholder.typicode.com/posts')
+        let usuariosAll = fetch ('https://jsonplaceholder.typicode.com/users')
+        console.log(postsAll)
+
+            
             Promise
-                .all([this.state.users, this.state.posts])
+                .all([usuariosAll, postsAll])
                 .then( function (values){
-                    let usuarios = JSON.parse(values[0])
+                    let usuarios = values[0]
                     console.log('usuarios:'+ usuarios)
-                    let posteos = JSON.parse(values[1])                    
+                    let posteos = JSON.parse(values[1])
+                    console.log('Posteos:'+ posteos)
                 })
                 .then( function (lista){
                     console.log(lista)
+                    //this.setState({all : lista})
                 })
                 .catch ( err => console.log(err))
-                */
     }
 
     render(){

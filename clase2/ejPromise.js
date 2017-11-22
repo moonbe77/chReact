@@ -3,6 +3,8 @@
 
 const requestProm = require('request-promise');
 
+let posteos = {}
+
 function postDetail (postId) {
     let respuesta = {};
     return requestProm('https://jsonplaceholder.typicode.com/posts/' + postId)
@@ -30,8 +32,8 @@ postDetail(2)
 
 let promDetail1 = postDetail(1);
 let promDetail2 = postDetail(2);
-
-/*Promise.all([promDetail1, promDetail2])
+/*
+Promise.all([promDetail1, promDetail2])
     .then(function (details) {
         let detail1 = details[0];
         let detail2 = details[1];
@@ -48,22 +50,34 @@ Promise
     .then(function (values) {
         let users = JSON.parse(values[0]);
         let posts = JSON.parse(values[1]);
+        //console.log(users)
 
-        let lista = posts.map(function(){
-            let value = users.find(function (u) {
-                return (users.id == posts);
+        /*let lista = posts.map(function(u){
+           // return posteos += JSON.stringify(u)
+            let value = posts.find(function (u) {
+                return (u.id == 10)
+                //return (u == 1);
             });
+        })*/
+
+        let addUsers = posts.map(function(p,users){
+            let add = Object.assign({},p)
+            let us = 
+            add.userId = 'test'
+            console.log(add)
+            return add
         })
-    //    return lista
+
+        return addUsers
+
         // Tomar el listado de posts
         // y por cada post reemplezar el userId por el user.
-        
-
     })
     .then(function (listaCompleta) {
-        console.log(listaCompleta);
+        console.log('**************************************')   
+        console.log('lista Completa: '+ JSON.parse(listaCompleta));
+        
     })
-    .catch(function (err) {
+    /*.catch(function (err) {
         console.log(err);
-    });
-
+    });*/
