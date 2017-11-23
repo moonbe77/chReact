@@ -48,11 +48,15 @@ class PostList2 extends React.Component {
                 .catch ( err => console.log(err))
     }
 
+    goAdd = () =>{
+        window.location.href ='/postlist/add'
+    }
     render(){
         console.log('renderizo la pantalla');
         console.log(this.state.users)
         return (
             <div>
+                <button onClick = {this.goAdd}>ADD</button>
                 {
                 //this.state.posts.length ? this.state.posts.length : 'Cargando Posts....'
                 this.state.posts.length ? //el ? hace referencia a un if ternario (if one line)

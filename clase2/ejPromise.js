@@ -59,24 +59,24 @@ Promise
                 //return (u == 1);
             });
         })*/
+        
+        // Tomar el listado de posts
+        // y por cada post reemplezar el userId por el user.
 
         let addUsers = posts.map(function(p,users){
             let add = Object.assign({},p)
-            let us = 
-            add.userId = 'test'
+            let addUsers = users.find(function (p){
+                return (add.userId = users.id)
+            }) 
+            //add.userId = 'test'
             console.log(add)
             return add
         })
-
         return addUsers
-
-        // Tomar el listado de posts
-        // y por cada post reemplezar el userId por el user.
     })
     .then(function (listaCompleta) {
         console.log('**************************************')   
-        console.log('lista Completa: '+ JSON.parse(listaCompleta));
-        
+        console.log('lista Completa: '+ JSON.parse(listaCompleta));        
     })
     /*.catch(function (err) {
         console.log(err);
