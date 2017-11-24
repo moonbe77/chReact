@@ -50,34 +50,40 @@ Promise
     .then(function (values) {
         let users = JSON.parse(values[0]);
         let posts = JSON.parse(values[1]);
-        //console.log(users)
+            /*
+        *Tomar el listado de posts
+        *y por cada post reemplezar el userId por el user.
+        */  
 
-        /*let lista = posts.map(function(u){
-           // return posteos += JSON.stringify(u)
-            let value = posts.find(function (u) {
-                return (u.id == 10)
-                //return (u == 1);
-            });
-        })*/
-        
-        // Tomar el listado de posts
-        // y por cada post reemplezar el userId por el user.
+        // console.log(add)
+        let add = Object.assign({},posts)
+            
+        for (const key in add) {
+            let id = add[key].userId
+            //console.log(users[id-1])            
+            add[key].userId = users[id-1]
+            //console.log(add[key])
+            //return add
+            }
 
-        let addUsers = posts.map(function(p,users){
-            let add = Object.assign({},p)
-            let addUsers = users.find(function (p){
-                return (add.userId = users.id)
-            }) 
-            //add.userId = 'test'
-            console.log(add)
-            return add
-        })
-        return addUsers
+
+        // let addU = posts.map(function(p){
+        // let usuarios = add.find(function (u){   
+        //         return ( u.id == add.userId )            
+        //     })    
+
+        //     return add.userId = usuarios
+        // })
+       
+
+        return add
     })
     .then(function (listaCompleta) {
-        console.log('**************************************')   
-        console.log('lista Completa: '+ JSON.parse(listaCompleta));        
+        let valor = JSON.stringify(listaCompleta)
+        console.log('**************************************/n')   
+        console.log('lista Completa: '+valor);    
+        return valor    
     })
-    /*.catch(function (err) {
+    .catch(function (err) {
         console.log(err);
-    });*/
+    });
