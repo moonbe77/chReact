@@ -13,7 +13,7 @@ class App extends React.Component {
         <div>
             Aca es el centro de la app
             <Router>
-                <div>
+                <div className="container">
                     <Route path="/" exact={true} component={Login}/>
                 </div>
             </Router>
