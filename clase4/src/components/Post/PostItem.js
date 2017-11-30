@@ -9,7 +9,7 @@ class PostItem extends React.Component{
             title: props.title,
             body: props.body,
             index: props.index,
-            userId: props.userId        
+            user: props.user        
         }
     }
     
@@ -21,13 +21,13 @@ class PostItem extends React.Component{
         return(            
             <div>
                 <div className="user">               
-                    <UsersInPost usuario={this.props.userId}/>
+                    <UsersInPost usuario={this.state.user}/>
                  </div>
                 <br/>
-                <strong>{ this.props.index + '.'+ this.props.title }</strong>
+                <strong>{ this.props.index + 1 + '.'+ this.state.title }</strong>
                 <br/>
                 <br/>
-                { this.props.body }
+                { this.state.body }
                 <hr/>
                 <button onClick={this.apreto}>Like</button>
                 <button onClick={this.apreto}>Edit</button>

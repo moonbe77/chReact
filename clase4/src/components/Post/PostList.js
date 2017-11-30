@@ -30,7 +30,7 @@ class PostList extends React.Component {
                         this.state.posts.map(function(p, index){ // la p es post uno solo.
                             return (
                                 <div>
-                                    { index + '.'+ p.title }<br/>
+                                    { index+ '....'+ p.title }<br/>
                                     { p.body }
                                     <br/>
                                     <hr/>

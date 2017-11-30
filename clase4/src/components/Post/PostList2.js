@@ -37,16 +37,10 @@ class PostList2 extends React.Component {
                 this.setState({ posts : posteos})
                 this.setState({ users : usuarios})
 
-                let postCompleto = posteos.map(function(p, index){
-                    let id = p.userId
-                    //console.log(p.userId)
-
-                    let usr = usuarios.find( u =>{  
-                        return u.id == id
-                    })  
-
-                    p.userId = usr
-                    return p
+                let postCompleto = posteos.map( function (p) {
+                    let copiaPosts = Object.assign( {} , p )
+                    copiaPosts.user = usuarios.find( u => u.id == p.userId )
+                    return copiaPosts
                 })
 
                 return postCompleto
@@ -71,7 +65,7 @@ class PostList2 extends React.Component {
                         //console.log(p)            
                         // la p es post, uno solo. index es el indice de la iteracion de map
                         return (
-                            <PostItem index={index} body={p.body} title={p.title} userId={p.userId} key={index}/> //la propiedad key es para que react indexe mejor los componentes, se le pusede pasar cualquier valor que sea unico
+                            <PostItem index={index} body={p.body} title={p.title} user={p.user} key={index}/> //la propiedad key es para que react indexe mejor los componentes, se le pusede pasar cualquier valor que sea unico
                         )
                     })
                     : //: es por el if one line
