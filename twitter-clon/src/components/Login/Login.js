@@ -1,5 +1,6 @@
 import React from 'react';
-import { FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
+import { FormGroup, FormControl, ControlLabel, Button, ButtonGroup, ButtonToolbar, Grid, Row, Col, Well } from 'react-bootstrap';
+
 
 class Login extends React.Component{
     constructor(){
@@ -14,14 +15,31 @@ class Login extends React.Component{
 
     render(){
         return(
-            <form>
-                <ControlLabel>Usuario</ControlLabel>
-                <FormControl type="text" />
-                <ControlLabel>Password</ControlLabel>                
-                <FormControl type="password"/>
-                <Button>Login!</Button>
-                <Button bsStyle ="primary">Reset</Button>
-            </form>
+            <Grid>
+            <Row className="show-grid">
+                <Col xs={12} md={4}><h3>Inicia sesion para ver el feed de twits</h3></Col>
+                <Col xs={6} md={4}> 
+                    <Well>
+                        <form>
+                            <ControlLabel>Usuario</ControlLabel>
+                            <FormControl type="text" />
+
+                            <ControlLabel>Password</ControlLabel>                
+                            <FormControl type="password"/>
+
+                            <ControlLabel></ControlLabel>
+                            
+                            <ButtonToolbar className="center-align">
+                                <Button bsStyle ="primary">Login!</Button>
+                                <Button bsStyle="info" type="reset" >Reset</Button>
+                            </ButtonToolbar>    
+                        </form>                        
+                    </Well>  
+                </Col>
+                <Col xs={6} md={4}><Button>Registrate!</Button></Col>
+            </Row>
+          </Grid>
+         
         )
     }
 }
