@@ -1,45 +1,50 @@
 import React from 'react';
-import { FormGroup, FormControl, ControlLabel, Button, ButtonGroup, ButtonToolbar, Grid, Row, Col, Well } from 'react-bootstrap';
+import { Form , Input, Button, Panel, Container, Row, Col }  from 'muicss/react';
 
 
 class Login extends React.Component{
     constructor(){
         super()
         this.state = {
-
+            email : '',
+            password : ''
         }
     }
 
-    //generarar handle attribute
-    //login
+    generateHandleAttribute = (attributeName) => {
+        return (event) =>{
+            let newState = {}
+            newState[attributeName] = event.target.value
+            this.setState(newState)
+        }
+    }
 
+    login = () => {
+        console.log(this.state)
+        //this.setState({ loading : 'true' })
+            console.log('inicio login')
+           // this.setState({ loading : 'false' })
+            window.location.href = '/twitts'
+        console.log(this.state)        
+    }
+    
     render(){
-        return(
-            <Grid>
-            <Row className="show-grid">
-                <Col xs={12} md={4}><h3>Inicia sesion para ver el feed de twits</h3></Col>
-                <Col xs={6} md={4}> 
-                    <Well>
-                        <form>
-                            <ControlLabel>Usuario</ControlLabel>
-                            <FormControl type="text" />
-
-                            <ControlLabel>Password</ControlLabel>                
-                            <FormControl type="password"/>
-
-                            <ControlLabel></ControlLabel>
-                            
-                            <ButtonToolbar className="center-align">
-                                <Button bsStyle ="primary">Login!</Button>
-                                <Button bsStyle="info" type="reset" >Reset</Button>
-                            </ButtonToolbar>    
-                        </form>                        
-                    </Well>  
-                </Col>
-                <Col xs={6} md={4}><Button>Registrate!</Button></Col>
-            </Row>
-          </Grid>
-         
+        return(  
+            <Container fluid={true}>
+                <Row>
+                    <Col sm="12" md-offset="2" md="8" >     
+                        <Panel>    
+                            <Form>
+                                <legend>Inicia Sesión</legend>
+                                <Input placeholder="Email"  onChange={this.generateHandleAttribute('email')}/>                                
+                                <Input placeholder="password" onChange={this.generateHandleAttribute('password')}/>                                
+                                <Button color="primary" onClick ={this.login} >Login</Button>
+                                <Button color="primary" variant="flat" type="reset" size="small">Reset</Button>
+                            </Form>             
+                        </Panel>
+                    </Col>
+                </Row>
+            </Container>
         )
     }
 }

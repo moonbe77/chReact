@@ -1,5 +1,6 @@
-import React from 'react';
-import { Panel } from 'react-bootstrap';
+import React from 'react'
+import './Twitt.css'
+import { Panel, Divider, Container, Row, Col  } from 'muicss/react';
 
 class Twitt extends React.Component {
     constructor(props) {
@@ -12,8 +13,14 @@ class Twitt extends React.Component {
     render() { 
         return ( 
           <div>
-              <Panel header={this.state.name}>
-                {this.state.twitt}
+              <Panel>
+                <div className="panel-header mui--text-title">
+                    {this.state.name}
+                </div>
+                <Divider/>
+                <div className="panel-body">
+                    {this.state.twitt}                
+                </div>
               </Panel>
           </div>
          )
