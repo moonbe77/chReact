@@ -1,5 +1,36 @@
+.mui-panel{
+    padding: 0px;
+}
+.panel-radius{
+    border-radius: 5px;
+}
 .panel-header{
     padding: 15px;
     background-color: #cac5c5;
     
+}
+.panel-body{
+    padding: 10px;
+}
+.panel-footer{
+    text-align: center;
+    font-size: 0.7em;
+    color: rgb(212, 209, 209);
+    margin-top: 15px;
+    margin-bottom: 0px; 
+    padding: 5px 5px;
+    background-color: #413f3f;    
+}
+.panel-footer > .valor{
+    display: inline;
+}
+.panel-footer > .valor::after {
+    content: ' | '
+}
+.panel-footer > .valor:last-child:after {
+    content: ''
+}
+.panelUserData{
+    /*padding: 0 5px;*/
+    font-weight: bold;
 }

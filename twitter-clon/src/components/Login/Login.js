@@ -1,13 +1,26 @@
 import React from 'react';
 import { Form , Input, Button, Panel, Container, Row, Col }  from 'muicss/react';
+import { CSSTransition } from 'react-transition-group'; // ES6
 
+
+const Fade = ({ children, ...props }) => (
+    <CSSTransition
+      {...props}
+      timeout={1000}
+      classNames="fade"
+    >
+      {children}
+    </CSSTransition>
+  );
 
 class Login extends React.Component{
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = {
             email : '',
-            password : ''
+            password : '',
+            show : false,
+            login : false
         }
     }
 
@@ -19,32 +32,59 @@ class Login extends React.Component{
         }
     }
 
-    login = () => {
+    login = (e) => {
+        e.preventDefault()
         console.log(this.state)
-        //this.setState({ loading : 'true' })
+        
+        this.setState({ loading : 'true' })
+        this.setState({ show: false})
+
+        setTimeout( () => {
+            window.location.href = '/twitts/'
+        
+        }, 800)
             console.log('inicio login')
            // this.setState({ loading : 'false' })
-            window.location.href = '/twitts'
         console.log(this.state)        
     }
     
-    render(){
-        return(  
-            <Container fluid={true}>
-                <Row>
-                    <Col sm="12" md-offset="2" md="8" >     
-                        <Panel>    
-                            <Form>
-                                <legend>Inicia Sesión</legend>
-                                <Input placeholder="Email"  onChange={this.generateHandleAttribute('email')}/>                                
-                                <Input placeholder="password" onChange={this.generateHandleAttribute('password')}/>                                
-                                <Button color="primary" onClick ={this.login} >Login</Button>
-                                <Button color="primary" variant="flat" type="reset" size="small">Reset</Button>
-                            </Form>             
-                        </Panel>
-                    </Col>
-                </Row>
-            </Container>
+    componentDidMount(){
+        this.setState({ show: true})
+        console.log(this.state.show)
+        
+    }
+
+    test = () =>{
+        this.setState({show : false})
+    }
+
+    render(){        
+        return(   
+            <div>             
+            <Fade in={this.state.show}> 
+            <div >               
+                <Container fluid={true}>
+                    <Row>
+                        <Col sm="12" md-offset="2" md="8" > 
+                            <Panel>    
+                                <Form className="mui--text-center">
+                                    <legend>Inicia Sesión</legend>
+                                    <Input placeholder="Email"  onChange={this.generateHandleAttribute('email')}/>                                
+                                    <Input placeholder="password" onChange={this.generateHandleAttribute('password')}/> 
+                                    <Button color="primary" onClick ={this.login} >Login</Button>
+                                    <Button color="primary" variant="flat" type="reset" size="small">Reset</Button>
+                                </Form>             
+                            </Panel>                          
+                        </Col>
+                    </Row>
+                </Container>
+                </div>
+            </Fade> 
+           
+                <Button onClick={this.test}>Test</Button>
+            </div>       
+
+
         )
     }
 }
