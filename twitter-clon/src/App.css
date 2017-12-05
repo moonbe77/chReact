@@ -1,2 +1,11 @@
+.mui-form{
+    padding: 5px;
+}
 
+.error > input{
+    color: red;
+}
 
+.ok > input{
+    color: green;
+}
