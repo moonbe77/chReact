@@ -17,20 +17,23 @@ class Register extends React.Component{
     constructor(props){
         super(props)
         this.state = {
+            user : {
                 name : '',
-                lastName : '',
+                lastname : '',
                 email : '',
                 password : '',
-                show : false,
-                login : false
+            },
+            show : false,
+            login : false
         }
     }
 
-    generateHandleAttribute = (attributeName) => {
+    generateHandleAttribute = (attributeName) => {     
+
         return (event) =>{
-            let newState = {}
-            newState[attributeName] = event.target.value
-            this.setState(newState)
+            let user = this.state.user
+            user[attributeName] = event.target.value
+            this.setState({user})
         }
     }
 
@@ -43,6 +46,15 @@ class Register extends React.Component{
             'Content-Type' : 'application/json'
          },
          body : JSON.stringify(this.state.user)
+     })
+     .then( response => response.json())
+     .then( data =>{         
+         console.log(data)
+         if (data.name == this.state.user.name){
+             window.location.href = '/'
+         }else{
+             alert('algo salio mal')
+         }
      })       
     }
     
@@ -63,7 +75,7 @@ class Register extends React.Component{
     }
 
     render(){        
-        console.log(this.state)
+       // console.log(this.state)
         return(   
             <div>             
             <Fade in={this.state.show}> 
@@ -75,19 +87,19 @@ class Register extends React.Component{
                                 <Form className="mui--text-center">
                                     <legend>Inicia Sesión</legend>
                                     <Input 
-                                    className={this.state.name.length < 3 ? 'error' : 'ok'} 
+                                    className={this.state.user.name.length < 3 ? 'error' : 'ok'} 
                                     placeholder="Name" 
                                     onChange={this.generateHandleAttribute('name')}/> 
 
-                                    <Input className={this.state.lastName.length < 3 ? 'error' : 'ok'} 
+                                    <Input className={this.state.user.lastname.length < 3 ? 'error' : 'ok'} 
                                     placeholder="lastName" 
-                                    onChange={this.generateHandleAttribute('lastName')}/>        
+                                    onChange={this.generateHandleAttribute('lastname')}/>        
 
-                                    <Input className={this.validarEmail(this.state.email) ? 'error' : 'ok'} 
+                                    <Input className={this.validarEmail ? 'ok' : 'error'} 
                                     placeholder="Email"  
                                     onChange={this.generateHandleAttribute('email')}/>
 
-                                    <Input className={this.state.name.length < 3 ? 'error' : 'ok'} 
+                                    <Input className={this.state.user.name.length < 3 ? 'error' : 'ok'} 
                                     placeholder="password" 
                                     onChange={this.generateHandleAttribute('password')}/> 
 

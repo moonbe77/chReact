@@ -17,9 +17,11 @@ const Fade = ({ children, ...props }) => (
 class Login extends React.Component{
     constructor(props){
         super(props)
-        this.state = {            
-            email : '',
-            password : '',
+        this.state = {
+            user : {
+                email : '',
+                password : '',
+            },         
             show : false,
             login : false
         }
@@ -27,26 +29,32 @@ class Login extends React.Component{
 
     generateHandleAttribute = (attributeName) => {
         return (event) =>{
-            let newState = {}
-            newState[attributeName] = event.target.value
-            this.setState(newState)
+            let user = this.state.user
+            user[attributeName] = event.target.value
+            this.setState({user})
         }
     }
 
     login = (e) => {
         e.preventDefault()
         console.log(this.state)
-        
-        this.setState({ loading : 'true' })
-        this.setState({ show: false})
-
-        setTimeout( () => {
-            window.location.href = '/twitts/'
-        
-        }, 800)
-            console.log('inicio login')
-           // this.setState({ loading : 'false' })
-        console.log(this.state)        
+     fetch('http://159.203.190.127:4000/login',{
+         method : 'POST',
+         headers : {
+            'Content-Type' : 'application/json'
+         },
+         body : JSON.stringify(this.state.user)
+     })
+     .then( response => response.json())
+     .then( data =>{
+         localStorage.setItem('token',JSON.stringify(data.token))
+         console.log(data)
+         if (data.token){
+             window.location.href = '/twitts'
+         }else{
+             alert(data.message)
+         }
+     })       
     }
     
     componentDidMount(){
@@ -60,7 +68,7 @@ class Login extends React.Component{
     }
 
     render(){       
-        console.log(this.state) 
+        //console.log(this.state) 
         return(   
             <div>             
                 <Fade in={this.state.show}> 

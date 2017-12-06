@@ -16,13 +16,8 @@ class App extends React.Component {
       <div className="App">
           <Header/>
           <Container>
-            <Row>
-              <Col md="2">{
-                window.location.pathname === '/' ?  
-                'Inicia sesion para ver los twits' 
-                : window.location.pathname}
-              </Col>  
-              <Col md="10">
+            <Row>              
+              <Col md="12">
                 <Router>
                     <div  className="mui--align-middle" style={{marginTop:'15px'}}>                 
                       <Route path="/" exact={true} component={Login}/>  

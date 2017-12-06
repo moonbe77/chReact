@@ -7,35 +7,30 @@ class Twitt extends React.Component {
     constructor(props) {
         super(props);
         this.state = { 
-               postsCompleto : []
+               twitts : []
          }
     }
 
 componentDidMount(){
 
- Promise.all([
-         fetch('https://jsonplaceholder.typicode.com/posts'),
-        fetch('https://jsonplaceholder.typicode.com/users')
-    ])
-    .then(response => Promise.all(response.map(r => r.json())))
-        .then( datos =>{        
-            this.setState({ posts : datos[0]})
-            this.setState({ users : datos[1]})
-            console.log(this.state.users)
-            console.log(this.state.posts)
-            
-            let PostMergeado = datos[0].map( p =>{
-                let nuevoPost = Object.assign({},p)
-                nuevoPost.user = datos[1].find( u => u.id == p.userId )
-                delete nuevoPost.userId
-                return nuevoPost
-            } )
-            return PostMergeado
+ 
+    fetch('http://159.203.190.127:4000/twits'/*,{
+        method : 'GET',
+        headers : {
+            'Content-Type' : 'application/json',
+            'x-access-token' : localStorage.getItem('token')
+        }
+    }*/)
+    .then(response => {
+        console.log(response)
+        response.json()
+    })
+    .then( datos =>{        
+            this.setState( datos )
+            console.log(this.state.twitts)           
         })
-        .then( postsConUsuarios => {
-            console.log(postsConUsuarios)
-            this.setState({ postsCompleto : postsConUsuarios})
-        })
+    .catch(err => console.log(err))
+        
 }
 
 
@@ -45,15 +40,15 @@ componentDidMount(){
         return ( 
           <div>
               {
-                  this.state.postsCompleto.length  ? this.state.postsCompleto.map( (p,index) =>{
+                  this.state.twitts.length  ? this.state.twitts.map( (p,index) =>{
                     return (
                         <Panel key={index}>                        
                             <div className="panel-header panel-radius mui--text-center mui--text-title">
-                                {index + 1 +'. '+p.title}
+                                {index + 1 +'. '+p._id}
                             </div>
                             <Divider/>
                             <div className="panel-body">
-                                {p.body}                
+                                {p.message}                
                             </div>
 
                             <DatosUsuario user={p.user}/>
