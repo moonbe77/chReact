@@ -12,21 +12,18 @@ class Twitt extends React.Component {
     }
 
 componentDidMount(){
-
+console.log(localStorage.getItem('token'))
  
-    fetch('http://159.203.190.127:4000/twits'/*,{
-        method : 'GET',
-        headers : {
-            'Content-Type' : 'application/json',
-            'x-access-token' : localStorage.getItem('token')
-        }
-    }*/)
-    .then(response => {
-        console.log(response)
-        response.json()
+    fetch('http://159.203.190.127:4000/tweets',{
+        headers: {
+            "Content-Type": "application/json",
+            "x-access-token": localStorage.getItem('token')
+        },
+        method: 'GET' // opcional
     })
+    .then(response => { response.json() })
     .then( datos =>{        
-            this.setState( datos )
+            this.setState( {twitts =  datos} )
             console.log(this.state.twitts)           
         })
     .catch(err => console.log(err))

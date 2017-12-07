@@ -47,7 +47,7 @@ class Login extends React.Component{
      })
      .then( response => response.json())
      .then( data =>{
-         localStorage.setItem('token',JSON.stringify(data.token))
+         localStorage.setItem('token',data.token)
          console.log(data)
          if (data.token){
              window.location.href = '/twitts'

@@ -24,16 +24,17 @@ class Register extends React.Component{
                 password : '',
             },
             show : false,
-            login : false
+            login : false,
+            emailIsValid : false
         }
     }
 
-    generateHandleAttribute = (attributeName) => {     
-
-        return (event) =>{
-            let user = this.state.user
-            user[attributeName] = event.target.value
-            this.setState({user})
+    generateHandleAttribute = (attributeName) => { 
+      return (event) =>{
+        let user = this.state.user
+        let validarEmail = this.state.emailIsValid
+        user[attributeName] = event.target.value
+        this.setState({user})      
         }
     }
 
@@ -62,11 +63,13 @@ class Register extends React.Component{
         console.log('validar email'+ valor)
         if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3,4})/.test(valor)){
             console.log(true)
-         return true
+         this.setState({emailIsValid : true})
         } else {
             console.log(false)            
-         return false
+            this.setState({emailIsValid : false})
+            
         }
+            
       }
 
     componentDidMount(){
@@ -95,7 +98,7 @@ class Register extends React.Component{
                                     placeholder="lastName" 
                                     onChange={this.generateHandleAttribute('lastname')}/>        
 
-                                    <Input className={this.validarEmail ? 'ok' : 'error'} 
+                                    <Input className={this.emailState ? 'ok' : 'error'} 
                                     placeholder="Email"  
                                     onChange={this.generateHandleAttribute('email')}/>
 
