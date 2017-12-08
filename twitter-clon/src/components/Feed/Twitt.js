@@ -1,13 +1,27 @@
 import React from 'react'
 import './Twitt.css'
-import { Panel, Divider } from 'muicss/react';
-import DatosUsuario from './DatosUsuario'
+import { Panel, Divider } from 'muicss/react'
+import ItemTwitt from './ItemTwitt'
 
 class Twitt extends React.Component {
     constructor(props) {
         super(props);
         this.state = { 
-               twitts : []
+               twitts : [],
+               twitTest :  {
+                "_id": "123456789",
+                "message": "TWEET DE TEST",
+                "author": {
+                    "_id": "123456789ABC",
+                    "name": "Berny",
+                    "lastname": "Munz",
+                    "email": "qwerty@qwerty.com",
+                    "password": "123456",
+                    "isAdmin": false,
+                    "__v": 0
+                },
+                "__v": 0
+            }
          }
     }
 
@@ -21,35 +35,24 @@ console.log(localStorage.getItem('token'))
         },
         method: 'GET' // opcional
     })
-    .then(response => { response.json() })
-    .then( datos =>{        
-            this.setState( {twitts =  datos} )
-            console.log(this.state.twitts)           
-        })
+    .then(response => response.json() )
+    .then( twitts => {        
+        console.log(twitts)           
+            this.setState( {twitts} )
+    })
     .catch(err => console.log(err))
         
 }
 
-
     render() { 
-    console.log(this.state.postsCompleto)
+    console.log(this.state.twitts)
     //onsole.log(this.state.posts)
         return ( 
           <div>
               {
-                  this.state.twitts.length  ? this.state.twitts.map( (p,index) =>{
+                  this.state.twitts.length  ? this.state.twitts.map( ( t, index ) =>{
                     return (
-                        <Panel key={index}>                        
-                            <div className="panel-header panel-radius mui--text-center mui--text-title">
-                                {index + 1 +'. '+p._id}
-                            </div>
-                            <Divider/>
-                            <div className="panel-body">
-                                {p.message}                
-                            </div>
-
-                            <DatosUsuario user={p.user}/>
-                        </Panel> 
+                        <ItemTwitt key={index} message={t.message}/> 
                     )
                 } ): 'cargando.... posts'
               }

@@ -1,13 +1,14 @@
-import React from 'react';
-import './App.css';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import React from 'react'
+import './App.css'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 //import Login from './components/Login/Login';
-import { Container, Col, Row }  from 'muicss/react';
-import Header from './components/Header/Header';
-import Login from './components/Login/Login';
-import Twitt from './components/Feed/Twitt';
-import Register from './components/Login/Register';
+import { Container, Col, Row }  from 'muicss/react'
+import Header from './components/Header/Header'
+import Login from './components/Login/Login'
+import Twitt from './components/Feed/Twitt'
+import Register from './components/Login/Register'
+import CrearTwitt from './components/Feed/CrearTwitt'
 
 
 class App extends React.Component {
@@ -23,6 +24,7 @@ class App extends React.Component {
                       <Route path="/" exact={true} component={Login}/>  
                       <Route path="/twitts" exact={true} component={Twitt}/>
                       <Route path="/register" exact={true} component={Register}/>
+                      <Route path="/creartwitt" exact={true} component={CrearTwitt}/>
                     </div>
                 </Router>
               </Col>  

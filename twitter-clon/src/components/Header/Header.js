@@ -14,7 +14,9 @@ goToHome = ()=>{
 goToTwitts = ()=>{
     window.location.href = '/twitts'
 }
-
+goToCrearTwitt = ()=>{
+    window.location.href = '/creartwitt'
+}
     render() { 
         return ( 
             <div className="header">
@@ -22,6 +24,7 @@ goToTwitts = ()=>{
                 <Appbar>
                     <div className="mui--text-center mui--text-display3" onClick={this.goToHome}>Twitter Clon</div>                      
                     <div className="mui--text-left" onClick={this.goToTwitts}>Twitts</div>                      
+                    <div className="mui--text-left" onClick={this.goToCrearTwitt}>CrearTwitt</div>                      
                 </Appbar>
             </div>
          )
