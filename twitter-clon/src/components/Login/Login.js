@@ -50,7 +50,7 @@ class Login extends React.Component{
          localStorage.setItem('token',data.token)
          console.log(data)
          if (data.token){
-             window.location.href = '/twitts'
+             window.location.href = '/'
          }else{
              alert(data.message)
          }
@@ -79,13 +79,14 @@ class Login extends React.Component{
                                 <Panel>    
                                     <Form className="mui--text-center">
                                         <legend>Inicia Sesión</legend>
-                                        <Input placeholder="Email"  onChange={this.generateHandleAttribute('email')}/>                                
-                                        <Input placeholder="password" onChange={this.generateHandleAttribute('password')}/> 
+                                        <Input placeholder="qwerty@qwerty.com" onChange={this.generateHandleAttribute('email')}/>                                
+                                        <Input placeholder="password" type="password"  onChange={this.generateHandleAttribute('password')}/> 
                                         <Button color="primary" onClick ={this.login} >Login</Button>
                                         <Button color="primary" variant="flat" type="reset" size="small">Reset</Button>
-                                    </Form>             
+                                    </Form>  
+                                    <div><Link to={'/register'}><Button variant="flat" size="small">Registrate!</Button></Link> </div>            
                                 </Panel>   
-                                <div><Link to={'/register'}><Button variant="flat" size="small">Registrate!</Button></Link> </div>                        
+                                                       
                             </Col>
                         </Row>
                     </Container>

@@ -12,6 +12,12 @@ import CrearTwitt from './components/Feed/CrearTwitt'
 
 
 class App extends React.Component {
+
+  constructor(){
+    super();
+    this.token = localStorage.getItem('token');
+}
+
   render() {
     return (
       <div className="App">
@@ -20,11 +26,21 @@ class App extends React.Component {
             <Row>              
               <Col md="12">
                 <Router>
-                    <div  className="mui--align-middle" style={{marginTop:'15px'}}>                 
-                      <Route path="/" exact={true} component={Login}/>  
-                      <Route path="/twitts" exact={true} component={Twitt}/>
-                      <Route path="/register" exact={true} component={Register}/>
-                      <Route path="/creartwitt" exact={true} component={CrearTwitt}/>
+
+                    <div  className="mui--align-middle" style={{marginTop:'15px'}}>   
+                      {
+                        this.token ?
+                        <div>
+                          <Route path="/" exact={true} component={Twitt}/>
+                          <Route path="/tweets" exact={true} component={Twitt}/>
+                          <Route path="/creartwitt" exact={true} component={CrearTwitt}/>
+                        </div>
+                        :
+                        <div>
+                          <Route path="/" exact={true} component={Login}/>  
+                          <Route path="/register" exact={true} component={Register}/>
+                        </div>
+                      }
                     </div>
                 </Router>
               </Col>  
