@@ -54,7 +54,7 @@ console.log(localStorage.getItem('token'))
                     return (
                         <ItemTwitt key={index} message={t.message}/> 
                     )
-                } ): 'cargando.... posts'
+                } ): <div className="spinner"></div>
               }
               
           </div>
