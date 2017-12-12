@@ -9,16 +9,18 @@ class ItemTwitt extends React.Component {
             datos : []
          }
     }
+    
     render() { 
+        console.log(this.props.tweet)
         return ( 
-            <Panel>                        
+            <Panel className="panel-radius">                        
                 {/*<div className="panel-header panel-radius mui--text-center mui--text-title">
                     {index + 1 +'. '+t._id}
                 </div>*/}
-                {<DatosUsuario author={this.props.author}/>}
+                {<DatosUsuario author={this.props.tweet.author}/>}
                 <Divider/>
                 <div className="panel-body">
-                    {this.props.message}
+                    {this.props.tweet.message}
                 </div>
 
             </Panel> 

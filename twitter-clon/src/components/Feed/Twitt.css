@@ -6,8 +6,9 @@
 }
 .panel-header{
     padding: 15px;
-    background-color: #cac5c5;
-    
+    background-color: #cac5c5;  
+    display: flex;
+    justify-content: space-around;  
 }
 .panel-body{
     padding: 10px;

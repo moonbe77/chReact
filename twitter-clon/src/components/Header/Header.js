@@ -29,7 +29,9 @@ logOut = () =>{
             <div className="header">
             {/*<Link to={'/twitts'}>LINK</Link>*/}
                 <Appbar>
-                    <div className="mui--text-center mui--text-display3 mui--align-middle" onClick={this.goToHome}>Twitter Clon</div>                    <div className="mui--align-middle mui--text-center">
+                    <div className="mui--text-center mui--text-display3 mui--align-middle" 
+                    onClick={this.goToHome}>Twitter Clon</div>                    
+                    <div className="mui--align-middle mui--text-center">
                     {
                         this.state.token ?
                             <div>

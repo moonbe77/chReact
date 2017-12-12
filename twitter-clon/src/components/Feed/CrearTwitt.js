@@ -7,7 +7,7 @@ class CrearTwitt  extends React.Component {
         super(props)
         this.state = {
             user : '',
-         message : 'Te envio mi twitt!'
+         message : ''
             
         }
     }
@@ -18,9 +18,11 @@ class CrearTwitt  extends React.Component {
             this.setState({ message })
         }
     }
-    
+     
     enviar = (e) =>{
-        e.preventDefault()        
+        e.preventDefault() 
+
+        this.state ? 
         fetch('http://159.203.190.127:4000/tweets',{
             method : 'POST',
             headers : {
@@ -32,7 +34,8 @@ class CrearTwitt  extends React.Component {
         .then( response => response.json())
         .then( data =>{
             console.log(data)         
-        })       
+        }):
+        alert('Debes escribir algo')       
        }
 
 

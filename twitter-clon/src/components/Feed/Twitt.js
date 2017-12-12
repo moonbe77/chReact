@@ -1,6 +1,6 @@
 import React from 'react'
 import './Twitt.css'
-import { Panel, Divider } from 'muicss/react'
+import { Panel, Divider, Container, Row, Col } from 'muicss/react'
 import ItemTwitt from './ItemTwitt'
 
 class Twitt extends React.Component {
@@ -48,16 +48,21 @@ console.log(localStorage.getItem('token'))
     console.log(this.state.twitts)
     //onsole.log(this.state.posts)
         return ( 
-          <div>
-              {
-                  this.state.twitts.length  ? this.state.twitts.map( ( t, index ) =>{
-                    return (
-                        <ItemTwitt key={index} message={t.message}/> 
-                    )
-                } ): <div className="spinner"></div>
-              }
-              
-          </div>
+            <Container fluid={true}>
+                <Row>
+                    <Col sm="12" md-offset="3" md="6" > 
+                        <div>
+                            {
+                            this.state.twitts.length  ? this.state.twitts.map( tweet =>{
+                                return (
+                                    <ItemTwitt key={tweet._id} tweet={tweet}/> 
+                                )
+                            } ): <div className="spinner"></div>
+                            }                        
+                        </div>
+                    </Col>
+                </Row>
+            </Container>
          )
     }
 }

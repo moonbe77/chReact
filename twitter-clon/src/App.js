@@ -30,8 +30,8 @@ class App extends React.Component {
                     <div  className="mui--align-middle" style={{marginTop:'15px'}}>   
                       {
                         this.token ?
-                        <div>
-                          <Route path="/" exact={true} component={Twitt}/>
+                        <div >
+                          <Route path="/" exact={true} component={Twitt}/>                          
                           <Route path="/tweets" exact={true} component={Twitt}/>
                           <Route path="/creartwitt" exact={true} component={CrearTwitt}/>
                         </div>

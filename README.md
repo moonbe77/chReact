@@ -3,3 +3,7 @@
 reflecction, creacion de formularios en relacion a sus nececidades.
 
 react bootsrtap
+
+
+mail juanma
+juanma.v82@gmail.com
