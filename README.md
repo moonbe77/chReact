@@ -6,4 +6,4 @@ react bootsrtap
 
 
 mail juanma
-juanma.v82@gmail.com
+.v82@gmail.com
